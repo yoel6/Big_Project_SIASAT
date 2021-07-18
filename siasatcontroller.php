@@ -784,7 +784,6 @@ class siasatcontroller extends Controller
 							'banyak_Kelas' => $z
 						]
 					);
-					echo "hello";
 				}
 			}
 		}else{
@@ -805,7 +804,7 @@ class siasatcontroller extends Controller
 	public function tampilkan(){
 		session_start();
 		$nama1 = $_SESSION['nama'];
-	    $kelompok = DB::select("select matkul,kode,sks,prodi,kelas from matakuliah where Dosen='$nama1' group by matkul,kode,sks,prodi,kelas");
+		$kelompok = DB::select("select matkul,kode,sks,prodi,kelas from matakuliah where Dosen='$nama1' group by matkul,kode,sks,prodi,kelas");
 		return view('tampilkan',['jenis1'=>$kelompok]);
 	}
 	public function hapus($hapus){
@@ -824,10 +823,23 @@ class siasatcontroller extends Controller
 	}
 	public function nilai($nilai){
 		session_start();
+		$nama = $_SESSION['nama_mahasiswa'];
+  		if (!isset($nama)) {
+      		return view('tampilan1');	
+  		}
 		$r = $nilai;
 		$_SESSION["nilai"] = $r;
 		return view('nilai');	
 	}
-
+	public function masukkan_nilai(Request $req){
+		session_start();
+		$r = $_SESSION['nama_mahasiswa'];
+		$v = $req->nilai;
+		$f = $_SESSION["nilai"];
+		DB::update("update matkul_maha SET nilai='$v' where nama_mahasiswa='$r' and kode='$f' and banyak_kelas='1'");
+		unset($_SESSION["nilai"]);
+		unset($_SESSION['nama_mahasiswa']);
+		return redirect('siasat/tampilkan1/'.$f);
+	}
 }
 

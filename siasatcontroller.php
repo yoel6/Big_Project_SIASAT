@@ -824,9 +824,9 @@ class siasatcontroller extends Controller
 	public function nilai($nilai){
 		session_start();
 		$nama = $_SESSION['nama_mahasiswa'];
-  		if (!isset($nama)) {
-      		return view('tampilan1');	
-  		}
+		if (!isset($nama)) {
+			return view('tampilan1');	
+		}
 		$r = $nilai;
 		$_SESSION["nilai"] = $r;
 		return view('nilai');	

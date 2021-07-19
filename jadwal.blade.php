@@ -159,47 +159,59 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Kelas</th>
                 <th scope="col">Nama Matakuliah</th>
+                <th scope="col">Kelas</th>
                 <th scope="col">Dosen</th>
                 <th scope="col">Hari</th>
                 <th scope="col">Waktu</th>
-                
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <?php $no=1; ?>
-              @foreach($kartu1 as $b)
-
-              <tr>
+            <?php $no=1; ?>
+             @foreach($kartu as $b)
+              @if($b->banyak_kelas == 1) 
+               <tr>
                 <td>{{$no++}}</td>
-                <td>{{$b->kelas}}</td>
                 <td>{{$b->Matkul}}</td>
+                <td>{{$b->kelas}}</td>
                 <td>{{$b->Nama_dosen}}</td>
                 <td>{{$b->hari}}</td>
                 <td>jam {{$b->waktu1}}-{{$b->waktu2}}</td>
+                <td><a href="/siasat/hapus1/{{$b->kode}}">Hapus</a></td>
               </tr>
-
-              @endforeach
-            </tbody>
-          </table>
-          <footer class="page-footer font-small">
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2021 Copyright:
-              Yoel Chandra 
-            </div>
-            <!-- Copyright -->
-          </footer>
-          <div>
-            <!-- Footer -->
-          </main>
-          <!-- page-content" -->
-        </div>
-        <!-- page-wrapper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-      </body>
-      </html>
+              @endif
+              @if($b->banyak_kelas > 1)
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{$b->hari}}</td>
+                <td>jam {{$b->waktu1}}-{{$b->waktu2}}</td>
+                <td></td>
+              </tr>
+              @endif
+            @endforeach
+          </tbody>
+        </table>
+        <footer class="page-footer font-small">
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3">© 2021 Copyright:
+            Yoel Chandra 
+          </div>
+          <!-- Copyright -->
+        </footer>
+        <div>
+          <!-- Footer -->
+        </main>
+        <!-- page-content" -->
+      </div>
+      <!-- page-wrapper -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    </body>
+    </html>

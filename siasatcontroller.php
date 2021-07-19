@@ -836,10 +836,41 @@ class siasatcontroller extends Controller
 		$r = $_SESSION['nama_mahasiswa'];
 		$v = $req->nilai;
 		$f = $_SESSION["nilai"];
-		DB::update("update matkul_maha SET nilai='$v' where nama_mahasiswa='$r' and kode='$f' and banyak_kelas='1'");
+		if($v == "A"){
+			$R = 4;
+		}else if($v == "AB"){
+			$R = 3.6;
+		}else if($v == "B"){
+			$R = 3.2;
+		}else if($v == "BC"){
+			$R = 2.8;
+		}else if($v == "C"){
+			$R = 2.4;
+		}else if($v == "DC"){
+			$R = 2.0;
+		}else if($v == "E"){
+			$R = 1.6;
+		}
+		DB::update("update matkul_maha SET nilai='$v',nilai1='$R' where nama_mahasiswa='$r' and kode='$f' and banyak_kelas='1'");
 		unset($_SESSION["nilai"]);
 		unset($_SESSION['nama_mahasiswa']);
 		return redirect('siasat/tampilkan1/'.$f);
+	}
+	public function hasil_nilai(){
+		session_start();
+		$L = $_SESSION['nama_mahasiswa'];
+		$O = $_SESSION['Tahun'];
+		$P =$_SESSION['Semester'];
+		$sill = DB::select("select*from matkul_maha where banyak_kelas='1' and nama_mahasiswa='$L' and semester='$P' and tahun='$O'");
+		return view('hasil_nilai',['je'=>$sill]);
+	}
+	public function transkrip(){
+		session_start();
+		$L = $_SESSION['nama_mahasiswa'];
+		$O = $_SESSION['Tahun'];
+		$P =$_SESSION['Semester'];
+		$sill = DB::select("select*from matkul_maha where banyak_kelas='1' and nama_mahasiswa='$L'");
+		return view('transkrip',['je'=>$sill]);
 	}
 }
 

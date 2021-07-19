@@ -100,8 +100,7 @@
               </li>
             </ul>
           </div>
-          <!-- sidebar-header  -->
-          <!-- sidebar-search  -->
+          
           <div class="sidebar-menu">
             <ul>
               <li class="header-menu">
@@ -172,7 +171,7 @@
               $no=0;
               $nilai=0;
               $SKS=0;
-               $h = $no-1; 
+              $h = $no-1; 
               ?>
               @foreach($je as $b)
 
@@ -185,42 +184,42 @@
                 <td>{{$b->nilai1}}</td>
                 <td>{{$b->nilai}}</td>
                 <?php 
-                  $y = $b->sks;
-                  $t = $b->nilai1;
-                  $r = (int)$t;
-                  $q = (int)$y; 
-                  $nilai += $r;
-                  $SKS += $q;
+                $y = $b->sks;
+                $t = $b->nilai1;
+                $r = (int)$t;
+                $q = (int)$y; 
+                $nilai += $r;
+                $SKS += $q;
                 ?> 
-              @endforeach
+                @endforeach
 
-            </tr>
-                <td></td>
-                <td></td>
-                <td><b>SKS<b></td>
+              </tr>
+              <td></td>
+              <td></td>
+              <td><b>SKS<b></td>
                 <td>{{$SKS}}</td>
                 <?php $k = $nilai/$no; ?>
                 <td>{{round($k,2)}}</td>
                 <td></td>
-            </tbody>
-          </table>
-          <footer class="page-footer font-small">
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2021 Copyright:
-              Yoel Chandra 
-            </div>
-            <!-- Copyright -->
-          </footer>
-          <div>
-            <!-- Footer -->
-          </main>
-          <!-- page-content" -->
-        </div>
-        <!-- page-wrapper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-      </body>
-      </html>
+              </tbody>
+            </table>
+            <footer class="page-footer font-small">
+              <!-- Copyright -->
+              <div class="footer-copyright text-center py-3">© 2021 Copyright:
+                Yoel Chandra 
+              </div>
+              <!-- Copyright -->
+            </footer>
+            <div>
+              <!-- Footer -->
+            </main>
+            <!-- page-content" -->
+          </div>
+          <!-- page-wrapper -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+        </body>
+        </html>

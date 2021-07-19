@@ -129,7 +129,8 @@ class siasatcontroller extends Controller
 						'Tahun' => $key->Tahun,
 						'prodi'=> $key->prodi,
 						'fakultas' => $key->fakultas,
-						'banyak_Kelas' => $key->banyak_kelas
+						'banyak_Kelas' => $key->banyak_kelas,
+						'nilai1' => 0
 					]
 				);
 			}
@@ -165,7 +166,8 @@ class siasatcontroller extends Controller
 									'Tahun' => $key1->Tahun,
 									'prodi'=> $key1->prodi,
 									'fakultas' => $key1->fakultas,
-									'banyak_Kelas' => $key1->banyak_kelas
+									'banyak_Kelas' => $key1->banyak_kelas,
+									'nilai1' => 0
 								]
 							);
 							$sks = DB::select("select SUM(sks) AS jumlah from matkul_maha where nama_mahasiswa='$nama'");
@@ -204,7 +206,8 @@ class siasatcontroller extends Controller
 										'Tahun' => $key1->Tahun,
 										'prodi'=> $key1->prodi,
 										'fakultas' => $key1->fakultas,
-										'banyak_Kelas' => $key1->banyak_kelas
+										'banyak_Kelas' => $key1->banyak_kelas,
+										'nilai1' => 0
 									]
 								);
 								$sks1 = DB::select("select SUM(sks) AS jumlah from matkul_maha where nama_mahasiswa='$nama'");
@@ -258,7 +261,8 @@ class siasatcontroller extends Controller
 									'Tahun' => $key3->Tahun,
 									'prodi'=> $key3->prodi,
 									'fakultas' => $key3->fakultas,
-									'banyak_Kelas' => $key3->banyak_kelas
+									'banyak_Kelas' => $key3->banyak_kelas,
+									'nilai1' => 0
 								]
 							);
 						}elseif($hari1 != $hari2){
@@ -295,7 +299,8 @@ class siasatcontroller extends Controller
 										'Tahun' => $key3->Tahun,
 										'prodi'=> $key3->prodi,
 										'fakultas' => $key3->fakultas,
-										'banyak_Kelas' => $key3->banyak_kelas
+										'banyak_Kelas' => $key3->banyak_kelas,
+										'nilai1' => 0
 									]
 								);
 								break;
@@ -387,7 +392,8 @@ class siasatcontroller extends Controller
 						'Tahun' => $key->Tahun,
 						'prodi'=> $key->prodi,
 						'fakultas' => $key->fakultas,
-						'banyak_Kelas' => $key->banyak_kelas
+						'banyak_Kelas' => $key->banyak_kelas,
+						'nilai1' => 0
 					]
 				);
 			}
@@ -423,7 +429,8 @@ class siasatcontroller extends Controller
 									'Tahun' => $key1->Tahun,
 									'prodi'=> $key1->prodi,
 									'fakultas' => $key1->fakultas,
-									'banyak_Kelas' => $key1->banyak_kelas
+									'banyak_Kelas' => $key1->banyak_kelas,
+									'nilai1' => 0
 								]
 							);
 							$sks = DB::select("select SUM(sks) AS jumlah from matkul_maha where nama_mahasiswa='$nama'");
@@ -462,7 +469,8 @@ class siasatcontroller extends Controller
 										'Tahun' => $key1->Tahun,
 										'prodi'=> $key1->prodi,
 										'fakultas' => $key1->fakultas,
-										'banyak_Kelas' => $key1->banyak_kelas
+										'banyak_Kelas' => $key1->banyak_kelas,
+										'nilai1' => 0
 									]
 								);
 								$sks1 = DB::select("select SUM(sks) AS jumlah from matkul_maha where nama_mahasiswa='$nama'");
@@ -518,7 +526,8 @@ class siasatcontroller extends Controller
 									'Tahun' => $key3->Tahun,
 									'prodi'=> $key3->prodi,
 									'fakultas' => $key3->fakultas,
-									'banyak_Kelas' => $key3->banyak_kelas
+									'banyak_Kelas' => $key3->banyak_kelas,
+									'nilai1' => 0
 								]
 							);
 							
@@ -556,7 +565,8 @@ class siasatcontroller extends Controller
 										'Tahun' => $key3->Tahun,
 										'prodi'=> $key3->prodi,
 										'fakultas' => $key3->fakultas,
-										'banyak_Kelas' => $key3->banyak_kelas
+										'banyak_Kelas' => $key3->banyak_kelas,
+										'nilai1' => 0
 									]
 								);
 								break;
@@ -858,15 +868,17 @@ class siasatcontroller extends Controller
 	}
 	public function hasil_nilai(){
 		session_start();
-		$L = $_SESSION['nama_mahasiswa'];
+		$L = $_SESSION['nama'];
+		echo $L;
 		$O = $_SESSION['Tahun'];
+		echo $O;
 		$P =$_SESSION['Semester'];
 		$sill = DB::select("select*from matkul_maha where banyak_kelas='1' and nama_mahasiswa='$L' and semester='$P' and tahun='$O'");
 		return view('hasil_nilai',['je'=>$sill]);
 	}
 	public function transkrip(){
 		session_start();
-		$L = $_SESSION['nama_mahasiswa'];
+		$L = $_SESSION['nama'];
 		$O = $_SESSION['Tahun'];
 		$P =$_SESSION['Semester'];
 		$sill = DB::select("select*from matkul_maha where banyak_kelas='1' and nama_mahasiswa='$L'");
